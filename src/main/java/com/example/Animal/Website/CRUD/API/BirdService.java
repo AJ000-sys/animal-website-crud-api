@@ -39,6 +39,14 @@ public class BirdService {
         return birdRepository.getBirdByAge(age);
     }
 
+    public Bird updateBird(Long birdId, Bird bird) {
+        return birdRepository.save(bird);
+    }
+
+    public void deleteBird(Long birdId) {
+        birdRepository.deleteById(birdId);
+    }
+
     public Bird addBird(Bird bird) {
         return birdRepository.save(bird);
     }
