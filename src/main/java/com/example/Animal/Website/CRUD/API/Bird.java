@@ -21,9 +21,15 @@ public class Bird {
     public Bird() {
     }
 
-    // Constructors, getters, and setters
     public Bird(Long birdId, String name, String description, String breed, double age) {
         this.birdId = birdId;
+        this.name = name;
+        this.description = description;
+        this.breed = breed;
+        this.age = age;
+    }
+
+    public Bird(String name, String description, String breed, double age) {
         this.name = name;
         this.description = description;
         this.breed = breed;
