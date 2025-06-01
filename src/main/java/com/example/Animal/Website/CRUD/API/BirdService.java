@@ -2,6 +2,7 @@ package com.example.Animal.Website.CRUD.API;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class BirdService {
         return birdRepository.getBirdByDescription(description);
     }
 
-    public Bird getBirdByBreed(String breed) {
-        return (Bird) birdRepository.getBirdByBreed(breed);
+    public List<Bird> getBirdByBreed(String breed) {
+        return birdRepository.getBirdByBreed(breed);
     }
 
     public Bird getBirdByAge(double age) {

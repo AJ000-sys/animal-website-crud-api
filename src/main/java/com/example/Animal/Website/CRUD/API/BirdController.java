@@ -1,5 +1,7 @@
 package com.example.Animal.Website.CRUD.API;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,12 +28,8 @@ public class BirdController {
     }
 
     @GetMapping("/birds/name/{name}")
-    public Object getBirdByName(@RequestParam String key) {
-        if(key != null){
-            return birdService.getBirdByName(key);
-        }else{
-            return birdService.getAllBirds();
-        }
+    public Object getBirdByName(@PathVariable String name) {
+        return birdService.getBirdByName(name);
     }
 
     @GetMapping("/birds/description/{description}")
@@ -41,7 +38,7 @@ public class BirdController {
     }
 
     @GetMapping("/birds/breed/{breed}")
-    public Bird getBirdByBreed(@PathVariable String breed) {
+    public List<Bird> getBirdByBreed(@PathVariable String breed) {
         return birdService.getBirdByBreed(breed);
     }
 
