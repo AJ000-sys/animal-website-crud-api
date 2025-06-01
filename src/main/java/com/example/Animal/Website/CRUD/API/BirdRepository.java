@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface BirdRepository extends JpaRepository<Bird, Long> {
 
     List<Bird> getBirdByName(String name);
-    
+    List<Bird> getBirdByDescription(String description);
+    List<Bird> getBirdByBreed(String breed);
+    List<Bird> getBirdByAge(double age);
 }

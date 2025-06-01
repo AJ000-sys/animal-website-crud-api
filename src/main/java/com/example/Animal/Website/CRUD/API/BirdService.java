@@ -32,11 +32,11 @@ public class BirdService {
     }
 
     public Bird getBirdByBreed(String breed) {
-        return birdRepository.getBirdByBreed(breed);
+        return (Bird) birdRepository.getBirdByBreed(breed);
     }
 
     public Bird getBirdByAge(double age) {
-        return birdRepository.getBirdByAge(age);
+        return (Bird) birdRepository.getBirdByAge(age);
     }
 
     public Bird updateBird(Long birdId, Bird bird) {
