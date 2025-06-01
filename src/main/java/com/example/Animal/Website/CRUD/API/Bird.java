@@ -69,7 +69,7 @@ public class Bird {
         this.breed = breed;
     }
 
-    public double getAge() {
+    public int getAge() {
         return age;
     }
 

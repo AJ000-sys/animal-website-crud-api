@@ -16,7 +16,7 @@ public class BirdService {
     @Autowired
     private BirdRepository birdRepository;
 
-    public Object getAllBirds() {
+    public List<Bird> getAllBirds() {
         return birdRepository.findAll();
 }
 
