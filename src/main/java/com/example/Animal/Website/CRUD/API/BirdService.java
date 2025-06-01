@@ -57,7 +57,6 @@ public class BirdService {
             objectMapper.writeValue(new File("birds.json"), bird);
             return "Bird written to JSON file successfully";
         } catch (IOException e) {
-            e.printStackTrace();
             return "Error writing bird to JSON file";
         }
     }
@@ -67,7 +66,6 @@ public class BirdService {
         try {
             return objectMapper.readValue(new File("birds.json"), Bird.class);
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
         }
     }
