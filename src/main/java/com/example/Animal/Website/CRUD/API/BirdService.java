@@ -24,11 +24,11 @@ public class BirdService {
         return birdRepository.findById(birdId).orElse(null);
     }
 
-    public Object getBirdByName(String name) {
+    public List<Bird> getBirdByName(String name) {
         return birdRepository.getBirdByName(name);
     }
 
-    public Object getBirdByDescription(String description) {
+    public List<Bird> getBirdByDescription(String description) {
         return birdRepository.getBirdByDescription(description);
     }
 
@@ -36,20 +36,24 @@ public class BirdService {
         return birdRepository.getBirdByBreed(breed);
     }
 
-    public Bird getBirdByAge(double age) {
-        return (Bird) birdRepository.getBirdByAge(age);
+    public Bird getBirdByAge(int age) {
+        return birdRepository.findAll().stream()
+                .filter(b -> b.getAge() == age)
+                .findFirst()
+                .orElse(null);
+    }
+
+      public Bird addBird(Bird bird) {
+        return birdRepository.save(bird);
     }
 
     public Bird updateBird(Long birdId, Bird bird) {
+        bird.setBirdId(birdId);
         return birdRepository.save(bird);
     }
 
     public void deleteBird(Long birdId) {
         birdRepository.deleteById(birdId);
-    }
-
-    public Bird addBird(Bird bird) {
-        return birdRepository.save(bird);
     }
 
     public String writeJson(Bird bird) {
