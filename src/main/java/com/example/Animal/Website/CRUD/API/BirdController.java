@@ -15,32 +15,32 @@ public class BirdController {
     @Autowired
     private BirdService birdService;
 
-    @GetMapping
+    @GetMapping("/birds")   
     public Object getAllBirds() {
         return birdService.getAllBirds();
     }
 
-    @GetMapping("/{birdId}")
+    @GetMapping("/birds/{birdId}")
     public Bird getBirdById(@PathVariable Long birdId) {
         return birdService.getBirdById(birdId);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/birds/name/{name}")
     public Object getBirdByName(@PathVariable String name) {    
         return birdService.getBirdByName(name);
     }
 
-    @GetMapping("/description/{description}")
+    @GetMapping("/birds/description/{description}")
     public Object getBirdByDescription(@PathVariable String description) {
         return birdService.getBirdByDescription(description);
     }
 
-    @GetMapping("/breed/{breed}")
+    @GetMapping("/birds/breed/{breed}")
     public Object getBirdByBreed(@PathVariable String breed) {
         return birdService.getBirdByBreed(breed);
     }
 
-    @GetMapping("/age/{age}")
+    @GetMapping("/birds/age/{age}")
     public Object getBirdByAge(@PathVariable int age) {
         return birdService.getBirdByAge(age);
     }
@@ -50,18 +50,18 @@ public class BirdController {
         return birdService.addBird(bird);
     }
 
-    @PutMapping("/{birdId}")
+    @PutMapping("/birds/{birdId}")
     public Bird updateBird(@PathVariable Long birdId, @RequestBody Bird bird) {
         return birdService.updateBird(birdId, bird);
     }
 
-    @DeleteMapping("/{birdId}")
+    @DeleteMapping("/birds/{birdId}")
     public Object deleteBird(@PathVariable Long birdId) {
         birdService.deleteBird(birdId);
         return birdService.getAllBirds();
     }
 
-    @PostMapping("/write")
+    @PostMapping("/birds/write")    
     public Object writeJson(@RequestBody Bird bird) {
         birdService.writeJson(bird);
         return birdService.writeJson(bird);
