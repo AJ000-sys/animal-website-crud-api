@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,36 +15,32 @@ public class BirdController {
     @Autowired
     private BirdService birdService;
 
-    @GetMapping("/birds")
+    @GetMapping
     public Object getAllBirds() {
         return birdService.getAllBirds();
     }
 
-    @GetMapping("/birds/{id}")
-    public Bird getBirdById(@PathVariable Long id) {
-        return birdService.getBirdById(id);
+    @GetMapping("/{birdId}")
+    public Bird getBirdById(@PathVariable Long birdId) {
+        return birdService.getBirdById(birdId);
     }
 
-    @GetMapping("/birds/name/{name}")
-    public Object getBirdByName(@RequestParam String key) {    
-        if (key != null) {
-      return birdService.getBirdByName(key);
-    } else {
-      return birdService.getAllBirds();
-    }
+    @GetMapping("/name/{name}")
+    public Object getBirdByName(@PathVariable String name) {    
+        return birdService.getBirdByName(name);
     }
 
-    @GetMapping("/birds/description/{description}")
+    @GetMapping("/description/{description}")
     public Object getBirdByDescription(@PathVariable String description) {
         return birdService.getBirdByDescription(description);
     }
 
-    @GetMapping("/birds/breed/{breed}")
+    @GetMapping("/breed/{breed}")
     public Object getBirdByBreed(@PathVariable String breed) {
         return birdService.getBirdByBreed(breed);
     }
 
-    @GetMapping("/birds/age/{age}")
+    @GetMapping("/age/{age}")
     public Object getBirdByAge(@PathVariable int age) {
         return birdService.getBirdByAge(age);
     }
@@ -55,18 +50,18 @@ public class BirdController {
         return birdService.addBird(bird);
     }
 
-    @PutMapping("/birds/{birdId}")
+    @PutMapping("/{birdId}")
     public Bird updateBird(@PathVariable Long birdId, @RequestBody Bird bird) {
         return birdService.updateBird(birdId, bird);
     }
 
-    @DeleteMapping("/birds/{birdId}")
-    public Object deleteBird(@PathVariable Long id) {
-        birdService.deleteBird(id);
+    @DeleteMapping("/{birdId}")
+    public Object deleteBird(@PathVariable Long birdId) {
+        birdService.deleteBird(birdId);
         return birdService.getAllBirds();
     }
 
-    @PostMapping("/birds/write")
+    @PostMapping("/write")
     public Object writeJson(@RequestBody Bird bird) {
         birdService.writeJson(bird);
         return birdService.writeJson(bird);
