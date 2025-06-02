@@ -34,24 +34,24 @@ Gets a list of all Birds in the database.
 #### Response - A JSON array of Bird objects.
 
 ```json
-{
-  "birdId": 1,
-  "name": "Crow",
-  "description": "Intellegent, black birds",
-  "breed": "Corvus",
-  "age": 4
-}
+  {
+    "birdId": 1,
+    "name": "Crow",
+    "description": "Intellegent, black birds",
+    "breed": "Corvus",
+    "age": 4
+  }
 
-{
-  "birdId": 2,
-  "name": "Hawks",
-  "description": "Birds of prey",
-  "breed": "Accipiter",
-  "age": 2
-}
+  {
+    "birdId": 2,
+    "name": "Hawks",
+    "description": "Birds of prey",
+    "breed": "Accipiter",
+    "age": 2
+  }
 ```
 
-### [`/{birdId}`](http://localhost:8080/birds/1) (GET)
+2. ### [`/{birdId}`](http://localhost:8080/birds/1) (GET)
 Gets an individual Bird in the system. Each Bird is identified by a birdId
 
 #### Parameters
@@ -60,15 +60,15 @@ Gets an individual Bird in the system. Each Bird is identified by a birdId
 #### Response - A single bird
 
 ```json
-{
-  "birdId": 1,
-  "name": "Crow",
-  "description": "Intellegent, black birds",
-  "breed": "Corvus",
-  "age": 4
-}
+  {
+    "birdId": 1,
+    "name": "Crow",
+    "description": "Intellegent, black birds",
+    "breed": "Corvus",
+    "age": 4
+  }
 ```
-3. ### [`/name`](http://localhost:8080/birds/1) (GET)
+3. ### [`/name/{name}`](http://localhost:8080/birds/1) (GET)
 Gets a list of birds with a name that contains the given string.
 
 #### Parameters
@@ -78,12 +78,69 @@ Gets a list of birds with a name that contains the given string.
 
 ```json
 [
- {
-  "birdId": 1,
-  "name": "Crow",
-  "description": "Intellegent, black birds",
-  "breed": "Corvus",
-  "age": 4
-}
+  {
+    "birdId": 1,
+    "name": "Crow",
+    "description": "Intellegent, black birds",
+    "breed": "Corvus",
+    "age": 4
+  }
+]
+```
+4. ### [`/description/{description}`](http://localhost:8080//birds/description/{description}) (GET)
+Gets a list of birds by breed.
+
+#### Parameters
+- path variable: `description` &lt; String &gt; - REQUIRED
+
+#### Response - A JSON array of Bird objects.
+
+```json
+[
+    {
+    "birdId": 2,
+    "name": "Hawks",
+    "description": "Birds of prey",
+    "breed": "Accipiter",
+    "age": 2
+  }
+]
+```
+5. ### [`/breed/{breed}`](http://localhost:8080//birds//breed/{breed}) (GET)
+Gets a list of birds by breed.
+
+#### Parameters
+- path variable: `breed` &lt; String &gt; - REQUIRED
+
+#### Response - A JSON array of Bird objects.
+
+```json
+[
+    {
+    "birdId": 2,
+    "name": "Hawks",
+    "description": "Birds of prey",
+    "breed": "Accipiter",
+    "age": 2
+  }
+]
+```
+6. ### [`/age/{age}`](http://localhost:8080//birds//age/{age}) (GET)
+Gets a list of birds by age.
+
+#### Parameters
+- path variable: `age` &lt; String &gt; - REQUIRED
+
+#### Response - A JSON array of Bird objects.
+
+```json
+[
+    {
+    "birdId": 2,
+    "name": "Hawks",
+    "description": "Birds of prey",
+    "breed": "Accipiter",
+    "age": 2
+  }
 ]
 ```
