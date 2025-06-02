@@ -25,10 +25,10 @@ Simple CRUD API for Bird Objects with JPA (Hibernate)
 - Build and run the main class. You should see a new table created in the Neon database.
 
 ## API Endpoints
-Base URL: [`http://localhost:8080/bird`](http://localhost:8080/bird)
+Base URL: [`http://localhost:8080/birds`](http://localhost:8080/birds)
 
 
-1. ### [`/`](http://localhost:8080/bird) (GET)
+1. ### [`/`](http://localhost:8080/birds) (GET)
 Gets a list of all Birds in the database.
 
 #### Response - A JSON array of Bird objects.
@@ -49,3 +49,21 @@ Gets a list of all Birds in the database.
   "breed": "Accipiter",
   "age": 2
 }
+
+2. ### [`/{studentId}`](http://localhost:8080/birds/1) (GET)
+Gets an individual Bird in the system. Each Bird is identified by a birdId
+
+#### Parameters
+- Path Variable: `birdId` &lt;Long &gt; - REQUIRED
+
+#### Response - A single bird
+
+```json
+  {
+  "birdId": 1,
+  "name": "Crow",
+  "description": "Intellegent, black birds",
+  "breed": "Corvus",
+  "age": 4
+}
+```
