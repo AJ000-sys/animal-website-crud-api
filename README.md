@@ -49,8 +49,9 @@ Gets a list of all Birds in the database.
   "breed": "Accipiter",
   "age": 2
 }
+```
 
-2. ### [`/{studentId}`](http://localhost:8080/birds/1) (GET)
+### [`/{birdId}`](http://localhost:8080/birds/1) (GET)
 Gets an individual Bird in the system. Each Bird is identified by a birdId
 
 #### Parameters
