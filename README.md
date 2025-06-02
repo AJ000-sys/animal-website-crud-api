@@ -60,11 +60,30 @@ Gets an individual Bird in the system. Each Bird is identified by a birdId
 #### Response - A single bird
 
 ```json
-  {
+{
   "birdId": 1,
   "name": "Crow",
   "description": "Intellegent, black birds",
   "breed": "Corvus",
   "age": 4
 }
+```
+3. ### [`/name`](http://localhost:8080/birds/1) (GET)
+Gets a list of birds with a name that contains the given string.
+
+#### Parameters
+- query parameter: `search` &lt; String &gt; - REQUIRED
+
+#### Response - A JSON array of Bird objects.
+
+```json
+[
+ {
+  "birdId": 1,
+  "name": "Crow",
+  "description": "Intellegent, black birds",
+  "breed": "Corvus",
+  "age": 4
+}
+]
 ```
