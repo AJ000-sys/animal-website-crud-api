@@ -16,7 +16,7 @@ public class BirdService {
     @Autowired
     private BirdRepository birdRepository;
 
-    public List<Bird> getAllBirds() {
+    public Object getAllBirds() {
         return birdRepository.findAll();
 }
 
@@ -24,15 +24,15 @@ public class BirdService {
         return birdRepository.findById(birdId).orElse(null);
     }
 
-    public List<Bird> getBirdByName(String name) {
+    public Object getBirdByName(String name) {
         return birdRepository.getBirdByName(name);
     }
 
-    public List<Bird> getBirdByDescription(String description) {
+    public Object getBirdByDescription(String description) {
         return birdRepository.getBirdByDescription(description);
     }
 
-    public List<Bird> getBirdByBreed(String breed) {
+    public Object getBirdByBreed(String breed) {
         return birdRepository.getBirdByBreed(breed);
     }
 

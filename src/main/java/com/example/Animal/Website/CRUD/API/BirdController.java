@@ -18,7 +18,7 @@ public class BirdController {
     private BirdService birdService;
 
     @GetMapping("/birds")
-    public List<Bird> getAllBirds() {
+    public Object getAllBirds() {
         return birdService.getAllBirds();
     }
 
@@ -28,27 +28,27 @@ public class BirdController {
     }
 
     @GetMapping("/birds/name/{name}")
-    public List<Bird> getBirdByName(@PathVariable String name) {    
+    public Object getBirdByName(@PathVariable String name) {    
         return birdService.getBirdByName(name);
     }
 
     @GetMapping("/birds/description/{description}")
-    public List<Bird> getBirdByDescription(@PathVariable String description) {
+    public Object getBirdByDescription(@PathVariable String description) {
         return birdService.getBirdByDescription(description);
     }
 
     @GetMapping("/birds/breed/{breed}")
-    public List<Bird> getBirdByBreed(@PathVariable String breed) {
+    public Object getBirdByBreed(@PathVariable String breed) {
         return birdService.getBirdByBreed(breed);
     }
 
     @GetMapping("/birds/age/{age}")
-    public Bird getBirdByAge(@PathVariable int age) {
+    public Object getBirdByAge(@PathVariable int age) {
         return birdService.getBirdByAge(age);
     }
 
     @PostMapping("/birds")
-    public Bird addBird(@RequestBody Bird bird) {
+    public Object addBird(@RequestBody Bird bird) {
         return birdService.addBird(bird);
     }
 
