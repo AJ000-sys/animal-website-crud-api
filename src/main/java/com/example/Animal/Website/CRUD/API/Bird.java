@@ -41,8 +41,8 @@ public class Bird {
         return birdId;
     }
 
-    public void setBirdId(Long birdId) {
-        this.birdId = birdId;
+    public void setBirdId(Long id) {
+        this.birdId = id;
     }
 
     public String getName() {

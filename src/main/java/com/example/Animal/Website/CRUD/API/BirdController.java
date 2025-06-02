@@ -1,7 +1,5 @@
 package com.example.Animal.Website.CRUD.API;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,8 +56,8 @@ public class BirdController {
     }
 
     @DeleteMapping("/birds/{birdId}")
-    public Object deleteBird(@PathVariable Long birdId) {
-        birdService.deleteBird(birdId);
+    public Object deleteBird(@PathVariable Long id) {
+        birdService.deleteBird(id);
         return birdService.getAllBirds();
     }
 
