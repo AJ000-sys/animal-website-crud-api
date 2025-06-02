@@ -1,4 +1,4 @@
-# su25-jpa-crud-api
+# Animal Website CRUD API
 ## Description
 Simple CRUD API for Bird Objects with JPA (Hibernate)
 
