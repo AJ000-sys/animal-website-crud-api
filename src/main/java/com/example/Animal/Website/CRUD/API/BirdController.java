@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,14 +21,18 @@ public class BirdController {
         return birdService.getAllBirds();
     }
 
-    @GetMapping("/birds/{birdId}")
-    public Bird getBirdById(@PathVariable Long birdId) {
-        return birdService.getBirdById(birdId);
+    @GetMapping("/birds/{id}")
+    public Bird getBirdById(@PathVariable Long id) {
+        return birdService.getBirdById(id);
     }
 
     @GetMapping("/birds/name/{name}")
-    public Object getBirdByName(@PathVariable String name) {    
-        return birdService.getBirdByName(name);
+    public Object getBirdByName(@RequestParam String key) {    
+        if (key != null) {
+      return birdService.getBirdByName(key);
+    } else {
+      return birdService.getAllBirds();
+    }
     }
 
     @GetMapping("/birds/description/{description}")
@@ -62,12 +67,13 @@ public class BirdController {
     }
 
     @PostMapping("/birds/write")
-    public String writeJson(@RequestBody Bird bird) {
+    public Object writeJson(@RequestBody Bird bird) {
+        birdService.writeJson(bird);
         return birdService.writeJson(bird);
     }
 
     @GetMapping("/birds/read")
-    public Bird readJson() {
+    public Object readJson() {
         return birdService.readJson();
     }  
 }
