@@ -1,5 +1,7 @@
 package com.example.Animal.Website.CRUD.API;
 
+import io.micrometer.common.lang.NonNull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,8 +16,14 @@ public class Bird {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long birdId;
     
+    @NonNull
+    @Column(nullable = false)
     private String name;
+
+    @NonNull
+    @Column(nullable = false)
     private String description;
+    
     private String breed;
     private int age;
 

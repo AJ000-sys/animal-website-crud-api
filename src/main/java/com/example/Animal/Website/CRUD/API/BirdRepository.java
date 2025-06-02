@@ -16,4 +16,7 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
 
     @Query(value = "select * from birds b where b.description like %?1%", nativeQuery = true)
     List<Bird> getBirdByDescription(String description);
+
+    @Query(value = "select * from birds b where b.breed like %?1%", nativeQuery = true)
+    List<Bird> getBirdByAge(int age);
 }

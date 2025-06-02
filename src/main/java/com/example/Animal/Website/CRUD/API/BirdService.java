@@ -2,6 +2,7 @@ package com.example.Animal.Website.CRUD.API;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +24,12 @@ public class BirdService {
     }
 
     public Object getBirdByName(String name) {
+        if(name == null) return null;
         return birdRepository.getBirdByName(name);
     }
 
     public Object getBirdByDescription(String description) {
+        if(description == null) return null;
         return birdRepository.getBirdByDescription(description);
     }
 
@@ -46,6 +49,9 @@ public class BirdService {
     }
 
     public Bird updateBird(Long birdId, Bird bird) {
+        if (!birdRepository.existsById(birdId)) {
+            return null; // or throw an exception
+        }
         bird.setBirdId(birdId);
         return birdRepository.save(bird);
     }
