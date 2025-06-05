@@ -2,6 +2,7 @@ package com.example.Animal.Website.CRUD.API;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,33 +25,39 @@ public class BirdService {
     }
 
     public Object getBirdByName(String name) {
-        if(name == null) return null;
+        if(name == null || name.isEmpty()) {
+            return Collections.emptyList();
+        }
         return birdRepository.getBirdByName(name);
     }
 
     public Object getBirdByDescription(String description) {
-        if(description == null) return null;
+        if(description == null || description.isEmpty()) {
+            return Collections.emptyList();
+        }
         return birdRepository.getBirdByDescription(description);
     }
 
     public Object getBirdByBreed(String breed) {
+        if(breed == null || breed.isEmpty()) {
+            return Collections.emptyList();
+        }
         return birdRepository.getBirdByBreed(breed);
     }
 
-    public Bird getBirdByAge(int age) {
+    public Object getBirdByAge(int age) {
         return birdRepository.findAll().stream()
                 .filter(b -> b.getAge() == age)
-                .findFirst()
-                .orElse(null);
+                .toList();
     }
 
-      public Bird addBird(Bird bird) {
+    public Bird addBird(Bird bird) {
         return birdRepository.save(bird);
     }
 
     public Bird updateBird(Long birdId, Bird bird) {
         if (!birdRepository.existsById(birdId)) {
-            return null; // or throw an exception
+            return null;
         }
         bird.setBirdId(birdId);
         return birdRepository.save(bird);
@@ -70,7 +77,7 @@ public class BirdService {
         }
     }
 
-    public Bird readJson() {
+    public Object readJson() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(new File("birds.json"), Bird.class);
@@ -78,5 +85,4 @@ public class BirdService {
             return null;
         }
     }
-
 }
