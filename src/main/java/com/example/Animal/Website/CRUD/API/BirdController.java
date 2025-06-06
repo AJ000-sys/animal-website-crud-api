@@ -31,7 +31,9 @@ public class BirdController {
 
     @GetMapping("/new")
     public Object showCreateForm(Model model) {
-        model.addAttribute("bird", new Bird());
+        Bird bird = new Bird();
+        model.addAttribute("bird", bird);
+        model.addAttribute("Title", "Create New Bird");
         return "bird-create";
     }
 
