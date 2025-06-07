@@ -24,25 +24,25 @@ public class Bird {
     @Column(nullable = false)
     private String description;
     
-    private String breed;
-    private int age;
+    private String Habitat;
+    private int lifeSpan;
 
     public Bird() {
     }
 
-    public Bird(Long birdId, String name, String description, String breed, int age) {
+    public Bird(Long birdId, String name, String description, String Habitat, int lifeSpan) {
         this.birdId = birdId;
         this.name = name;
         this.description = description;
-        this.breed = breed;
-        this.age = age;
+        this.Habitat = Habitat;
+        this.lifeSpan = lifeSpan;
     }
 
-    public Bird(String name, String description, String breed, int age) {
+    public Bird(String name, String description, String Habitat, int lifeSpan) {
         this.name = name;
         this.description = description;
-        this.breed = breed;
-        this.age = age;
+        this.Habitat = Habitat;
+        this.lifeSpan = lifeSpan;
     }
 
     public Long getBirdId() {
@@ -69,19 +69,19 @@ public class Bird {
         this.description = description;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getHabitat() {
+        return Habitat;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setHabitat(String Habitat) {
+        this.Habitat = Habitat;
     }
 
-    public int getAge() {
-        return age;
+    public int getLifeSpan() {
+        return lifeSpan;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLifeSpan(int lifeSpan) {
+        this.lifeSpan = lifeSpan;
     }
 }
