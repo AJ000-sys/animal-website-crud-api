@@ -38,16 +38,16 @@ public class BirdService {
         return birdRepository.getBirdByDescription(description);
     }
 
-    public Object getBirdByBreed(String breed) {
-        if(breed == null || breed.isEmpty()) {
+    public Object getBirdByHabitat(String Habitat) {
+        if(Habitat == null || Habitat.isEmpty()) {
             return Collections.emptyList();
         }
-        return birdRepository.getBirdByBreed(breed);
+        return birdRepository.getBirdByHabitat(Habitat);
     }
 
-    public Object getBirdByAge(int age) {
+    public Object getBirdByLifeSpan(int lifeSpan) {
         return birdRepository.findAll().stream()
-                .filter(b -> b.getAge() == age)
+                .filter(b -> b.getLifeSpan() == lifeSpan)
                 .toList();
     }
 

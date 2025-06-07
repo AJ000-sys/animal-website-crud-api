@@ -8,7 +8,7 @@
 
 <body>
     <div class="container mt-4">
-        <h1>${Title}</h1>
+        <h1>Details</h1>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">${bird.name}</h5>

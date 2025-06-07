@@ -23,7 +23,7 @@
                 <input type="text" class="form-control" id="breed" name="breed">
             </div>
             <div class="mb-3">
-                <label for="age" class="form-label">Age</label>
+                <label for="Habitat" class="form-label">Habitat</label>
                 <input type="number" class="form-control" id="age" name="age">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
