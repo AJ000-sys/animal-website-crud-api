@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/birds")
@@ -44,14 +47,22 @@ public class BirdController {
     }
 
     @PostMapping("/new")
-    public Object createBird(@ModelAttribute Bird bird) {
-        birdService.addBird(bird);
-        return "redirect:/birds";
+    public Object createBird(@ModelAttribute Bird bird,
+            @RequestParam("image") MultipartFile file,
+            Model model) {
+        try {
+            Bird newBird = birdService.addBird(bird, file);
+            return "redirect:/birds";
+        } catch (Exception e) {
+            model.addAttribute("error", "Failed to upload image");
+            return "bird-create";
+        }
     }
 
     @PostMapping("/update")
-    public Object updateBird(@ModelAttribute Bird bird) {
-        birdService.updateBird(bird.getBirdId(), bird);
+    public Object updateBird(@ModelAttribute Bird bird,
+            @RequestParam("image") MultipartFile file) {
+        birdService.updateBird(bird.getBirdId(), bird, file);
         return "redirect:/birds/" + bird.getBirdId();
     }
 
@@ -59,5 +70,16 @@ public class BirdController {
     public Object deleteBird(@PathVariable Long birdId) {
         birdService.deleteBird(birdId);
         return "redirect:/birds";
-    }  
+    }
+
+    @PostMapping("/writeFile")
+    public Object writeJson(@RequestBody Bird bird) {
+        birdService.writeJson(bird);
+        return birdService.writeJson(bird);
+    }
+
+    @GetMapping("/readFile")
+    public Object readJson() {
+        return birdService.readJson();
+    }
 }

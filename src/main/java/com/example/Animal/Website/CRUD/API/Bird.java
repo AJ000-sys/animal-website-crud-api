@@ -1,6 +1,5 @@
 package com.example.Animal.Website.CRUD.API;
 
-import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,33 +15,39 @@ public class Bird {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long birdId;
     
-    @NonNull
     @Column(nullable = false)
     private String name;
 
-    @NonNull
     @Column(nullable = false)
     private String description;
-    
-    private String Habitat;
+
+    @Column(name = "life_span", nullable = false)
     private int lifeSpan;
+    
+    @Column(nullable = false)
+    private String habitat;
+
+    @Column(name = "image_path")
+    private String imagePath;
 
     public Bird() {
     }
 
-    public Bird(Long birdId, String name, String description, String Habitat, int lifeSpan) {
+    public Bird(Long birdId, String name, String description, int lifeSpan, String habitat, String imagePath) {
         this.birdId = birdId;
         this.name = name;
         this.description = description;
-        this.Habitat = Habitat;
         this.lifeSpan = lifeSpan;
+        this.habitat = habitat;
+        this.imagePath = imagePath;
     }
 
-    public Bird(String name, String description, String Habitat, int lifeSpan) {
+    public Bird(String name, String description, int lifeSpan, String habitat, String imagePath) {
         this.name = name;
         this.description = description;
-        this.Habitat = Habitat;
         this.lifeSpan = lifeSpan;
+        this.habitat = habitat;
+        this.imagePath = imagePath;
     }
 
     public Long getBirdId() {
@@ -69,19 +74,27 @@ public class Bird {
         this.description = description;
     }
 
-    public String getHabitat() {
-        return Habitat;
-    }
-
-    public void setHabitat(String Habitat) {
-        this.Habitat = Habitat;
-    }
-
     public int getLifeSpan() {
         return lifeSpan;
     }
 
     public void setLifeSpan(int lifeSpan) {
         this.lifeSpan = lifeSpan;
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
