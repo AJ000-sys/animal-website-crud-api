@@ -9,14 +9,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BirdRepository extends JpaRepository<Bird, Long> {
 
-    List<Bird> getBirdByBreed(String breed);
+    List<Bird> getBirdByHabitat(String habitat);
 
     @Query(value = "select * from birds b where b.name like %?1%", nativeQuery = true)
     List<Bird> getBirdByName(String name);
 
     @Query(value = "select * from birds b where b.description like %?1%", nativeQuery = true)
     List<Bird> getBirdByDescription(String description);
-
-    @Query(value = "select * from birds b where b.Habitat = ?1", nativeQuery = true)
-    List<Bird> getBirdByHabitat(String Habitat);
+    
+    @Query(value = "select * from birds b where b.life_span = ?1", nativeQuery = true)
+    List<Bird> getBirdByLifeSpan(int lifeSpan);
 }

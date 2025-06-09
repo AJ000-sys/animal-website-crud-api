@@ -4,6 +4,14 @@
 <head>
     <title>Bird List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,9 +22,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Breed</th>
-                    <th>Age</th>
+                    <th>Description</th>
+                    <th>Habitat</th>
+                    <th>Life Span</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,9 +34,19 @@
                 <#list birdslist as bird>
                     <tr>
                         <td>${bird.birdId}</td>
+                        <td>
+                            <#if bird.imagePath?? && bird.imagePath !="">
+                                <img src="${bird.imagePath}" class="table-img" alt="${bird.name}">
+                                <#else>
+                                    <div class="table-img bg-light"></div>
+                            </#if>
+                        </td>
                         <td>${bird.name}</td>
-                        <td>${bird.breed!''}</td>
-                        <td>${bird.age}</td>
+                        <td>${(bird.description!"")?substring(0, [50, bird.description?length]?min)}<#if
+                                (bird.description!"")?length gt 50>...</#if>
+                        </td>
+                        <td>${bird.habitat!''}</td>
+                        <td>${bird.lifeSpan} years</td>
                         <td>
                             <a href="/birds/${bird.birdId}" class="btn btn-info btn-sm">View</a>
                             <a href="/birds/edit/${bird.birdId}" class="btn btn-warning btn-sm">Edit</a>
