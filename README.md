@@ -33,15 +33,15 @@ Spring ORM allows seamless integration of Hibernate and JPA, making database int
 - [Entity](https://github.com/AJ000-sys/animal-website-crud-api/blob/7ef4d3c3494d001aa312b3529170d8369dffc90d/src/main/java/com/example/Animal/Website/CRUD/API/Bird.java)
   - The Bird class is annotated as an `@Entity `. This is used to map class attributes to database tables and SQL types.
   - We also annotated with `@Table` to give Hibernate directions to use this specific table name. This is optional but it helps with naming conventions.
-  - Any Entity must have at least one attribute that is annotated as an `@Id`. In our case it's conveniently the `studentId` attribute.
-    - We are also using an autogeneration strategy for the ID. This way we are not manually assigning IDs to our students. This is optional.
-       - For this reason, we also added a constructor to make a Student without an ID.
+  - Any Entity must have at least one attribute that is annotated as an `@Id`. In our case it's conveniently the `birdId` attribute.
+    - We are also using an autogeneration strategy for the ID. This way we are not manually assigning IDs to our birds. This is optional.
+       - For this reason, we also added a constructor to make a Bird without an ID.
   - An Entity must have a no-argument constructor.
 - [Repository](https://github.com/AJ000-sys/animal-website-crud-api/blob/7ef4d3c3494d001aa312b3529170d8369dffc90d/src/main/java/com/example/Animal/Website/CRUD/API/BirdController.java)
   - We are using an extension of the JPA Repository that comes with prebuilt database operations such as select all, select by id, select by any other reference, insert, delete, etc.
   - Annotate it as a `@Repository`.
   - We parametrize this using our object and its ID type.
-    - `public interface StudentRepository extends JpaRepository<Student, Long>` => We want to apply the JPA repository operations on the `Student` type. The `Student` has an ID of type `long`.
+    - `public interface BirdRepository extends JpaRepository<Bird, Long>` => We want to apply the JPA repository operations on the `Bird` type. The `Bird` has an ID of type `long`.
 - [Service](https://github.com/AJ000-sys/animal-website-crud-api/blob/7ef4d3c3494d001aa312b3529170d8369dffc90d/src/main/java/com/example/Animal/Website/CRUD/API/BirdService.java)
   - Annotated as a `@Service`.
   - It is the go-between from controller to database. In here we define what functions we need from the repository. A lot of the functions are default functions that our repository inherits from JPA (save, delete, findAll, findByX), some of them are custom made (getHonorsStudents, getStudentsByName).
