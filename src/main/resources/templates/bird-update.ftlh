@@ -10,20 +10,8 @@
     <div class="container mt-4">
         <h1>Edit Bird</h1>
 
-        <form action="/birds/update" method="post" enctype="multipart/form-data">
+        <form action="/birds/update" method="post">
             <input type="hidden" name="birdId" value="${bird.birdId}">
-
-
-            <div class="mb-3">
-
-                <div class="mb-2">
-                    <img src="${bird.imagePath}" alt="Current image" style="max-width: 200px;">
-                    <div class="form-text">Current image</div>
-                </div>
-
-                <label for="image" class="form-label">New Image (leave blank to keep current)</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*">
-            </div>
 
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>

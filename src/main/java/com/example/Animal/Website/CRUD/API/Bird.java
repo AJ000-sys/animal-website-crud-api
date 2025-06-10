@@ -27,9 +27,6 @@ public class Bird {
     @Column(nullable = false)
     private String habitat;
 
-    @Column(name = "image_path")
-    private String imagePath;
-
     public Bird() {
     }
 
@@ -39,15 +36,13 @@ public class Bird {
         this.description = description;
         this.lifeSpan = lifeSpan;
         this.habitat = habitat;
-        this.imagePath = imagePath;
     }
 
-    public Bird(String name, String description, int lifeSpan, String habitat, String imagePath) {
+    public Bird(String name, String description, int lifeSpan, String habitat) {
         this.name = name;
         this.description = description;
         this.lifeSpan = lifeSpan;
         this.habitat = habitat;
-        this.imagePath = imagePath;
     }
 
     public Long getBirdId() {
@@ -88,13 +83,5 @@ public class Bird {
 
     public void setHabitat(String habitat) {
         this.habitat = habitat;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 }

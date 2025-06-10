@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-4">
         <h1>Add new bird</h1>
-        <form action="/birds/new" method="post" enctype="multipart/form-data">
+        <form action="/birds/new" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -28,12 +28,6 @@
             <div class="mb-3">
                 <label for="habitat" class="form-label">Habitat</label>
                 <input type="text" class="form-control" id="habitat" name="habitat" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="image" class="form-label">Bird Image</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                <div class="form-text">Upload a picture of the bird (JPEG, PNG, etc.)</div>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
