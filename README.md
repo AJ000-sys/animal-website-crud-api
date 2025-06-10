@@ -1,5 +1,5 @@
 # Animal Website CRUD API
-## CRUD MVC App using JPA/Hibernate, Postgres, and FreeMarker.
+## CRUD MVC App using JPA/Hibernate, Postgres, and FreeMarker
 
 ### Version
 1.0.0
