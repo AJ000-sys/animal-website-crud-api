@@ -4,14 +4,6 @@
 <head>
     <title>Bird List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .table-img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-    </style>
 </head>
 
 <body>
@@ -22,7 +14,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Habitat</th>
@@ -34,13 +25,6 @@
                 <#list birdslist as bird>
                     <tr>
                         <td>${bird.birdId}</td>
-                        <td>
-                            <#if bird.imagePath?? && bird.imagePath !="">
-                                <img src="${bird.imagePath}" class="table-img" alt="${bird.name}">
-                                <#else>
-                                    <div class="table-img bg-light"></div>
-                            </#if>
-                        </td>
                         <td>${bird.name}</td>
                         <td>${(bird.description!"")?substring(0, [50, bird.description?length]?min)}<#if
                                 (bird.description!"")?length gt 50>...</#if>

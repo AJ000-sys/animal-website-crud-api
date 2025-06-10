@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/birds")
@@ -22,6 +20,7 @@ public class BirdController {
     @GetMapping
     public Object getAllBirds(Model model) {
         model.addAttribute("birdslist", birdService.getAllBirds());
+        model.addAttribute("Title", "AllBirds");
         return "bird-list";
     }
 
@@ -47,22 +46,19 @@ public class BirdController {
     }
 
     @PostMapping("/new")
-    public Object createBird(@ModelAttribute Bird bird,
-            @RequestParam("image") MultipartFile file,
-            Model model) {
+    public Object createBird(@ModelAttribute Bird bird, Model model) {
         try {
-            Bird newBird = birdService.addBird(bird, file);
+            Bird newBird = birdService.addBird(bird);
             return "redirect:/birds";
         } catch (Exception e) {
-            model.addAttribute("error", "Failed to upload image");
+            model.addAttribute("error", "Failed to create bird");
             return "bird-create";
         }
     }
 
     @PostMapping("/update")
-    public Object updateBird(@ModelAttribute Bird bird,
-            @RequestParam("image") MultipartFile file) {
-        birdService.updateBird(bird.getBirdId(), bird, file);
+    public Object updateBird(@ModelAttribute Bird bird) {
+        birdService.updateBird(bird.getBirdId(), bird);
         return "redirect:/birds/" + bird.getBirdId();
     }
 
